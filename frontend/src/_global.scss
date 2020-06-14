@@ -1,0 +1,82 @@
+$black: #111;
+$darker: #131921;
+$dark: #232f3e;
+$orange: #f0c14b;
+$red: rgba(204, 2, 2, 0.712);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font: 1.6rem Helvetica;
+  height: 100vh;
+}
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 500px / 16px = 31.25em */
+@media (max-width: 31.25em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px $darker solid;
+  background-color: $orange;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: darken($orange, 5);
+  }
+
+  &:active {
+    box-shadow: inset 1px 1px 10px 1px $dark;
+    background-color: darken($orange, 10);
+  }
+}
+
+#root {
+  display: grid;
+  grid-template-areas:
+  "header"
+  "main"
+  "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 10rem 1fr 5rem;
+  height: 100%;
+}

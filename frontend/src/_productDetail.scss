@@ -1,0 +1,61 @@
+@import "./global";
+
+.details-container {
+  padding-top: .5rem;
+
+  .details {
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr;
+    padding: 1rem;
+    gap: 1rem;
+
+    .detail-image {
+      img {
+        max-width: 60rem;
+        max-height: 60rem;
+      }
+    }
+
+    .detail-title {
+    }
+
+    .detail-checkout {
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.192);
+      padding: 0.5rem;
+
+      button {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.2rem;
+        min-height: 35px;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+
+        i {
+          background-color: $dark;
+          color: white;
+          padding: 0.4rem;
+          margin-right: 1.5rem;
+          border-radius: 5px;
+        }
+
+        span {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 75em) {
+  .details {
+    .detail-image {
+      img {
+        max-width: 30rem;
+        max-height: 30rem;
+      }
+    }
+  }
+}

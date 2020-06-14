@@ -1,0 +1,264 @@
+@import "./global";
+
+.header {
+  grid-area: header;
+  color: white;
+  
+  .nav-belt {
+    background-color: $darker;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    gap: 1rem;
+    min-height: 50px;
+    align-items: center;
+    padding: .4rem;
+
+
+    .nav-left {
+
+      .amazon-logo {
+        margin-left: 5rem;
+      }
+
+/* 
+========================================================================
+================================ BURGER ================================
+========================================================================
+*/
+      /* Position and sizing of burger button */
+      .bm-burger-button {
+        position: absolute;
+        top: 1rem !important;
+        left: 1rem !important;
+        transform: translate(0, -10%) scale(0.8);
+        width: 36px;
+        height: 30px;
+        left: 36px;
+        top: 36px;
+      }
+      
+      /* Color/shape of burger icon bars */
+      .bm-burger-bars {
+        background: #373a47;
+      }
+      
+      /* Color/shape of burger icon bars on hover*/
+      .bm-burger-bars-hover {
+        background: $orange;
+      }
+      
+      /* Position and sizing of clickable cross button */
+      .bm-cross-button {
+        height: 24px;
+        width: 24px;
+      }
+      
+      /* Color/shape of close button cross */
+      .bm-cross {
+        background: #bdc3c7;
+      }
+      
+      /*
+      Sidebar wrapper styles
+      Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+      */
+      .bm-menu-wrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+      }
+      
+      /* General sidebar styles */
+      .bm-menu {
+        background: $dark;
+        padding: 2.5em 1.5em 0;
+        font-size: 1.15em;
+      }
+      
+      /* Morph shape necessary with bubble or elastic */
+      .bm-morph-shape {
+        fill: #373a47;
+      }
+      
+      /* Wrapper for item list */
+      .bm-item-list {
+        color: #b8b7ad;
+        padding: 0.8em;
+      }
+      
+      /* Individual item */
+      .bm-item {
+        display: inline-block;
+      }
+      
+      /* Styling of overlay */
+      .bm-overlay {
+        background: rgba(0, 0, 0, 0.3);
+      }
+    }
+// ==============================================================
+    .nav-middle {
+      background-color: $orange;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      // min-height: 40px;
+
+      .custom-select {
+        border: none;
+        border-right: 1px $darker solid;
+        border-radius: 5px 0 0 5px;
+        height: 30px;
+        min-width: auto;
+        outline: none;
+        background-color: white;
+        flex-basis: 20%;
+
+        &:focus {
+          border: 2px $orange solid;          
+        }
+        
+      }
+
+      input[type="text"] {
+        width: 50%;
+        height: 100%;
+        border: none;
+        border-right: 1px $darker solid;
+        height: 30px;
+        outline: none;
+        flex-basis: 70%;
+
+        &:focus {
+          border: 2px $orange solid;          
+        }
+      }
+
+      .nav-search {
+        cursor: pointer;
+        display: flex;
+        flex-basis: 10%;
+        width: 10%;
+        min-width: 25px;
+        justify-content: center;
+        i {
+          color: $darker;
+        }
+      }
+    }
+
+    .nav-right {
+      justify-self: end;
+    }
+  }
+/*
+=====================================================================
+============================== EXTRA BAR ============================ 
+=====================================================================
+*/
+  .nav-extras {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    gap: 1rem;
+    align-items: center;      
+    background-color: $dark;      
+    padding: .4rem;
+
+    .location {        
+      display: flex;
+      align-items: center;
+      width: 15rem;
+
+      i {
+        font-size: 2.4rem;
+        margin-right: .5rem;
+      }
+
+      .country {
+        font-weight: bolder;
+
+        .country-result {
+          display: flex;
+          align-items: center;
+          font-weight: bolder;
+
+          svg {
+            margin-left: 10px;
+          }
+
+          i {
+            font-size: .8rem;
+            color: red;
+          }
+        }
+      }
+    } 
+    
+    .most-wanted {
+      padding: .3rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .deals {
+      justify-self: end;
+    }
+  }
+}
+
+/* 
+========================================================================
+================================= TICK =================================
+              https://stackoverflow.com/a/41078668/13266620
+========================================================================
+*/
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: $orange;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: $darker;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  box-shadow: inset 0px 0px 0px $orange;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px $orange;
+  }
+}
