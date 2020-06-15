@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Header from "./Components/Header";
 import Main from "./Components/Main";
 import Footer from "./Components/Footer";
-import ProductDetails from "./Components/ProductDetails";
+import ProductDetail from "./Components/ProductDetail";
 import './App.scss';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route path="/product/:id" component={ProductDetails} />
+        <Route path="/products/:id" component={ProductDetail} />
       </Switch>   
       <Footer />
     </>

@@ -11,6 +11,7 @@ export default {
       brand: "Acer",
       rating: 4.4,
       numReviews: 5480,
+      stockCount: Math.floor(Math.random()*21)
     },
     {
       _id: uuidv4(),
@@ -21,6 +22,7 @@ export default {
       brand: "Asus",
       rating: 4.3,
       numReviews: 453,
+      stockCount: Math.floor(Math.random()*21)
     },
     {
       _id: uuidv4(),
@@ -31,6 +33,7 @@ export default {
       brand: "HP",
       rating: 4.1,
       numReviews: 65,
+      stockCount: Math.floor(Math.random()*21)
     },
     {
       _id: uuidv4(),
@@ -41,6 +44,7 @@ export default {
       brand: "Lenovo",
       rating: 3.5,
       numReviews: 22,
+      stockCount: Math.floor(Math.random()*21)
     },
     {
       _id: uuidv4(),
@@ -51,6 +55,7 @@ export default {
       brand: "Apple",
       rating: 4.6,
       numReviews: 454,
+      stockCount: Math.floor(Math.random()*21)
     },
     {
       _id: uuidv4(),
@@ -61,6 +66,7 @@ export default {
       brand: "LG",
       rating: 4.2,
       numReviews: 18,
+      stockCount: Math.floor(Math.random()*21)
     },
     {
       _id: uuidv4(),
@@ -71,6 +77,7 @@ export default {
       brand: "Apple",
       rating: 3.9,
       numReviews: 82,
+      stockCount: 0,
       renewed: true
     },
   ],

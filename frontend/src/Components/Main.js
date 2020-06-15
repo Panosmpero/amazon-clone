@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-// import data from "../data";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { listProducts } from "../actions/productActions";
 
 const Main = () => {
-
-  const [products, setProducts] = useState([])
+  // Access REDUX store's state
+  const productList = useSelector((state) => state.productList);
+  const { products, loading, error } = productList;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get("/api/products");
-      console.log(data)
-      setProducts(data)
-    }
-    fetchData()
-  },[])
+    dispatch(listProducts());
+  }, [dispatch]);
 
-  return (
+  return loading ? (
+    <div>Loading...</div>
+  ) : error ? (
+    <div>{error}</div>
+  ) : (
     <>
       <main className="main">
-        <div className="main-results">{products.length} of over 3,000 results for "laptop"</div>
+        <div className="main-results">
+          {products.length} of over 3,000 results for "laptop"
+        </div>
         <div className="main-filters">Filters</div>
         <div className="main-products">
           Products
-
           {products.map((product, idx) => {
             let {
               _id,
@@ -34,16 +36,16 @@ const Main = () => {
               numReviews,
               renewed,
             } = product;
-            
+
             return (
               <div className="product" key={`main-product-${idx}`}>
-                <Link to={`/product/${_id}`}>
+                <Link to={`/products/${_id}`}>
                   <div className="image-container">
                     <img className="product-img" src={image} alt="product" />
                   </div>
                 </Link>
                 <div className="product-description">
-                  <Link to={`/product/${_id}`}>
+                  <Link to={`/products/${_id}`}>
                     <h3 className="product-title">
                       {renewed ? "(Renewed)" : null} {title}
                     </h3>
@@ -62,7 +64,6 @@ const Main = () => {
   );
 };
 
-
 function formatPrice(price) {
   let intNumber = price.toFixed(2).split(".")[0];
   let decimal = price.toFixed(2).split(".")[1];
@@ -71,8 +72,8 @@ function formatPrice(price) {
 
   return (
     <div>
-      <span>$</span>        
-      <div className="product-int-num"> 
+      <span>$</span>
+      <div className="product-int-num">
         {intNumber}
         <span>{decimal}</span>
       </div>
