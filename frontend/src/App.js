@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import Main from "./Components/Main";
 import Footer from "./Components/Footer";
 import ProductDetail from "./Components/ProductDetail";
+import Cart from "./Components/Cart";
 import './App.scss';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Main} />
         <Route path="/products/:id" component={ProductDetail} />
+        <Route path="/cart/:id?" component={Cart} />
       </Switch>   
       <Footer />
     </>

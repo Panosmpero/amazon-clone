@@ -26,8 +26,6 @@ const detailsProduct = (productId) => async (dispatch) => {
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
     
   } catch (error) {
-    console.log("test3")
-
     dispatch({ type: PRODUCT_DETAILS_FAIL, payload: error.message });
   }
 };

@@ -775,6 +775,205 @@ button:active {
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font: 1.6rem Helvetica;
+  height: 100vh;
+}
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 500px / 16px = 31.25em */
+@media (max-width: 31.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px #131921 solid;
+  background-color: #f0c14b;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #eeb933;
+}
+
+button:active {
+  -webkit-box-shadow: inset 1px 1px 10px 1px #232f3e;
+          box-shadow: inset 1px 1px 10px 1px #232f3e;
+  background-color: #ecb11c;
+}
+
+#root {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "header" "main" "footer";
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 10rem 1fr 5rem;
+      grid-template-rows: 10rem 1fr 5rem;
+  height: 100%;
+}
+
+.cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 1rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.cart .cart-items-container {
+  -webkit-box-flex: 5;
+      -ms-flex: 5 60rem;
+          flex: 5 60rem;
+  padding: 1rem;
+}
+
+.cart .cart-items-container .cart-legend {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.581), rgba(0, 0, 0, 0.004) 3px, transparent);
+}
+
+.cart .cart-items-container .cart-product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.581), rgba(0, 0, 0, 0.004) 3px, transparent);
+}
+
+.cart .cart-items-container .cart-product div {
+  padding: 0.5rem;
+}
+
+.cart .cart-items-container .cart-product .image-container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cart .cart-items-container .cart-product .image-container .cart-image {
+  max-width: 10rem;
+  max-height: 10rem;
+}
+
+.cart .cart-items-container .cart-product .cart-name {
+  -webkit-box-flex: 8;
+      -ms-flex: 8 1;
+          flex: 8 1;
+}
+
+.cart .cart-items-container .cart-product .cart-name .cart-title {
+  cursor: pointer;
+}
+
+.cart .cart-items-container .cart-product .cart-name .cart-title:hover {
+  color: rgba(204, 2, 2, 0.712);
+}
+
+.cart .cart-items-container .cart-product .cart-quantity .btn-delete {
+  margin-left: 2rem;
+  background: none;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 50%;
+  font-size: 2.2rem;
+  color: #131921;
+  -webkit-transform: translate(0, 9%);
+          transform: translate(0, 9%);
+}
+
+.cart .cart-items-container .cart-product .cart-quantity .btn-delete:hover {
+  -webkit-transform: translate(0, 5%) scale(1.1);
+          transform: translate(0, 5%) scale(1.1);
+}
+
+.cart .cart-items-container .cart-product .cart-price {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  text-align: right;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.cart .cart-actions {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 20rem;
+          flex: 1 20rem;
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.192);
+          box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.192);
+  padding: 1rem;
+}
+
+.cart .cart-actions .btn-checkout {
+  width: 100%;
+  font-size: 1.8rem;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
 .footer {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
