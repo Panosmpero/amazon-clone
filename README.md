@@ -11,3 +11,9 @@
 - axios
 - link frontend - backend
 - redux - react-redux - redux-thunk
+- Cookie store
+- props.history
+- mongoose - schema
+- path, dotenv
+- jwt
+- sign-in - register user

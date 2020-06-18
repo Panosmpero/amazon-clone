@@ -249,8 +249,18 @@ button:active {
 }
 
 .header .nav-belt .nav-right {
-  -ms-grid-column-align: end;
-      justify-self: end;
+  justify-self: end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .nav-belt .nav-right a {
+  margin-right: 1rem;
+}
+
+.header .nav-belt .nav-right a:hover {
+  color: #f0c14b;
 }
 
 .header .nav-extras {
@@ -972,6 +982,163 @@ button:active {
   font-size: 1.8rem;
   padding: 1rem;
   margin-top: 2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font: 1.6rem Helvetica;
+  height: 100vh;
+}
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 500px / 16px = 31.25em */
+@media (max-width: 31.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px #131921 solid;
+  background-color: #f0c14b;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #eeb933;
+}
+
+button:active {
+  -webkit-box-shadow: inset 1px 1px 10px 1px #232f3e;
+          box-shadow: inset 1px 1px 10px 1px #232f3e;
+  background-color: #ecb11c;
+}
+
+#root {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "header" "main" "footer";
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 10rem 1fr 5rem;
+      grid-template-rows: 10rem 1fr 5rem;
+  height: 100%;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form .form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px black solid;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 40rem;
+}
+
+.form .form-container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 1.5rem 0;
+}
+
+.form .form-container div:nth-child(1) {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.form .form-container div:nth-child(1) h3 {
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.form .form-container div:nth-child(2) {
+  color: rgba(204, 2, 2, 0.712);
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.form .form-container div:nth-child(6) {
+  font-weight: 700;
+}
+
+.form .form-container div:nth-child(8) a {
+  text-decoration: underline;
+  margin-top: .5rem;
+}
+
+.form .form-container div:nth-child(8) a:hover {
+  color: rgba(204, 2, 2, 0.712);
+}
+
+.form .form-container input {
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.form .form-container button {
+  padding: 1rem;
+  width: 100%;
 }
 
 .footer {

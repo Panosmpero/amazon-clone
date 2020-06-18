@@ -1,7 +1,28 @@
 import express from "express";
 import data from "./data";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import cors from "cors"
+import userRouter from "./routes/userRoutes"
+
+// get env from frontend folder
+import { resolve } from "path";
+import { config } from "dotenv";
+config({ path: resolve(__dirname, "../frontend/.env") })
+
+// connect mongodb
+const mongooseURI = process.env.MONGOOSE_URI // process.env.MONGOOSE_URI or "mongodb://localhost/AmazonClone"
+mongoose.connect(mongooseURI, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
+  if (err) console.log("Cannot connect to db " + err)
+  console.log("DB connected")
+})
 
 const app = express();
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+
+app.use("/api/users", userRouter)
 
 app.get("/api/products/:id", (req, res) => {
   const productId = req.params.id;

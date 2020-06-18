@@ -150,6 +150,13 @@
 
     .nav-right {
       justify-self: end;
+      display: flex;
+      a {
+        margin-right: 1rem;
+        &:hover {
+          color: $orange;
+        }
+      }
     }
   }
 /*
