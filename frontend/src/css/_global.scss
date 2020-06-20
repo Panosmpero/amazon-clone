@@ -77,6 +77,19 @@ button {
   "main"
   "footer";
   grid-template-columns: 1fr;
-  grid-template-rows: 10rem 1fr 5rem;
+  grid-template-rows: 1fr 10fr 1fr;
   height: 100%;
+}
+
+.header {
+  grid-area: header;
+  color: white;
+}
+
+.main {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
 }

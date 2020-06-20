@@ -74,7 +74,7 @@ const Header = () => {
         </div>
 
         <div className="nav-extras">
-          <div className="location">
+          <div className="nav-extras-left">
             <i className="fas fa-map-marker-alt"></i>
             <div className="country">
               <p> Deliver to: </p>
@@ -112,13 +112,13 @@ const Header = () => {
               )}
             </div>
           </div>
-          <div className="most-wanted">
+          <div className="nav-extras-middle">
             <div>thing</div>
             <div>thing2</div>
             <div>thing3</div>
             <div>thing4</div>
           </div>
-          <div className="deals">
+          <div className="nav-extras-right">
             <div>Shop Deals of the Day</div>
           </div>
         </div>

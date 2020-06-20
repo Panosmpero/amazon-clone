@@ -1,7 +1,6 @@
 @import "./global";
 
-.main {
-  grid-area: main;
+.main-container {
   width: 100%;
   height: 100%;
   display: grid;
@@ -90,5 +89,13 @@ background: linear-gradient(to bottom,rgba(0, 0, 0, 0.581),rgba(0, 0, 0, 0.004) 
       }
     }
   }
+}
 
+@media only screen and (max-width: 48em) {
+  .main-container {
+    grid-template-areas:
+      "results results"
+      "filter filter"
+      "products products";
+  }
 }

@@ -19,7 +19,7 @@ const Main = () => {
     <div>{error}</div>
   ) : (
     <>
-      <main className="main">
+      <div className="main-container">
         <div className="main-results">
           {products.length} of over 3,000 results for "laptop"
         </div>
@@ -59,7 +59,7 @@ const Main = () => {
             );
           })}
         </div>
-      </main>
+      </div>
     </>
   );
 };
