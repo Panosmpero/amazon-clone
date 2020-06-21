@@ -71,7 +71,7 @@ export default {
     {
       _id: uuidv4(),
       title:
-        "Apple MacBook Pro MLH12LL/A 13-inch Laptop with Touch Bar, 2.9GHz dual-core Intel Core i5, 8GB Memory, 256GB, Retina Display, Space Gray (Renewed)",
+        "Apple MacBook Pro MLH12LL/A 13-inch Laptop with Touch Bar, 2.9GHz dual-core Intel Core i5, 8GB Memory, 256GB, Retina Display, Space Gray",
       image: "/img/macbook-pro-MLH12LL-A.jpg",
       price: 1029.99,
       brand: "Apple",

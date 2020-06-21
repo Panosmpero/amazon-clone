@@ -1,0 +1,29 @@
+@import "./global";
+
+.footer {
+  grid-area: footer;
+  color: white;
+
+  .footer-back-to-top {
+    background-color: lighten($dark, 10);    
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover {
+      background-color: lighten($dark, 20);
+    }
+  }
+
+  .footer-about {
+    background-color: $dark;
+    padding: 5rem;
+  }
+
+  .footer-more {
+    background-color: $darker;
+    padding: 5rem;
+  }
+
+}

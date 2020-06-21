@@ -1,0 +1,72 @@
+@import "./global";
+
+$loading-background: inherit;
+$loading-color: black;
+$size: 100px;
+$border: $size/50;
+$fontsize: $size/6;
+
+.loading-container {
+  background: $loading-background;
+  position: relative;  
+  width: $size;
+  height: $size;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.loading {  
+  width: $size;
+  height: $size;
+  border-top: $border $loading-color solid;
+  border-radius: 50%;
+  animation: loading infinite 1s linear;
+}
+
+.loading-text {
+  color: $loading-color;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+  font-size: $fontsize;  
+}
+
+.loading-dot {
+  opacity: 0;  
+}
+
+.loading-dot:nth-child(1) {
+  animation: loading-dot infinite 1.4s;
+}
+
+.loading-dot:nth-child(2) {
+  animation: loading-dot infinite 1.4s;
+  animation-delay: .3s;
+}
+
+.loading-dot:nth-child(3) {
+  animation: loading-dot infinite 1.4s;
+  animation-delay: .6s;
+}
+
+@keyframes loading-dot {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

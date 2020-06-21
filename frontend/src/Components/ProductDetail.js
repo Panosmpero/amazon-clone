@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { detailsProduct } from "../actions/productActions";
+import Loading from "./Loading";
 
 const ProductDetail = (props) => {
   const [quantity, setQuantity] = useState(1);
@@ -27,7 +28,7 @@ const ProductDetail = (props) => {
       </div>
 
       {loading ? (
-        <div>Loading...</div>
+        <Loading />
       ) : error ? (
         <div>{error}</div>
       ) : (

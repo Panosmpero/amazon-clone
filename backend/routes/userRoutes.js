@@ -1,6 +1,7 @@
 import express from "express";
 import User from "../models/user";
 import { getToken } from "../util";
+// import bcrypt from "bcrypt";
 
 const userRouter = express.Router();
 
@@ -27,13 +28,16 @@ userRouter.post("/signin", async (req, res) => {
   }
 });
 
-// register - address is still /api/users/signin
+// register - address is still /api/users/register
 userRouter.post("/register", async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    let { username, email, password } = req.body;
+    // console.log(username, email, password)
+    // let hash = bcrypt.hashSync(password, 10)
+    // password = hash   
+    // console.log(password)
     const user = new User({ username, email, password });
     const newUser = await user.save();
-    console.log(newUser)
     if (newUser) {
       const { _id, username, email, isAdmin } = newUser;
       const token = getToken(newUser);
@@ -49,7 +53,7 @@ userRouter.post("/register", async (req, res) => {
     }
 
   } catch (error) {
-    res.send({ msg: "Error!!!" });
+    res.send({ msg: "Invalid Username" });
   }
 });
 

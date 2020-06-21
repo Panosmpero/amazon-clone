@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { listProducts } from "../actions/productActions";
+import Loading from "./Loading";
 
 const Main = () => {
   // Access REDUX store's state
@@ -14,7 +15,7 @@ const Main = () => {
   }, [dispatch]);
 
   return loading ? (
-    <div>Loading...</div>
+    <Loading />
   ) : error ? (
     <div>{error}</div>
   ) : (
@@ -39,13 +40,13 @@ const Main = () => {
 
             return (
               <div className="product" key={`main-product-${idx}`}>
-                <Link to={`/products/${_id}`}>
+                <Link to={`/product/${_id}`}>
                   <div className="image-container">
                     <img className="product-img" src={image} alt="product" />
                   </div>
                 </Link>
                 <div className="product-description">
-                  <Link to={`/products/${_id}`}>
+                  <Link to={`/product/${_id}`}>
                     <h3 className="product-title">
                       {renewed ? "(Renewed)" : null} {title}
                     </h3>

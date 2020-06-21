@@ -41,7 +41,7 @@ const Cart = (props) => {
                 <img className="cart-image" src={product.image} alt="product" />
               </div>
               <div className="cart-name">
-                <Link className="cart-title" to={`/products/${product.productId}`}>
+                <Link className="cart-title" to={`/product/${product.productId}`}>
                   {product.title}
                 </Link>
                 <div className="cart-quantity">

@@ -15,5 +15,6 @@
 - props.history
 - mongoose - schema
 - path, dotenv
-- jwt
+- jwt auth
 - sign-in - register user
+- css tables

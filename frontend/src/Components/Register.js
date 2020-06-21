@@ -30,7 +30,7 @@ const Register = (props) => {
         </div>
         <div>
           {loading && <div>Loading...</div>}
-          {error && <div>{error}</div>}
+          {error && <div>{error.msg}</div>}
         </div>
         <div>
           <label htmlFor="username">Username</label>
