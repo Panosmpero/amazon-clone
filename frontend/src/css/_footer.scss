@@ -3,27 +3,31 @@
 .footer {
   grid-area: footer;
   color: white;
+  height: 100vh;
 
   .footer-back-to-top {
-    background-color: lighten($dark, 10);    
-    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lighten($dark, 5);    
+    height: 5%;
     text-align: center;
     cursor: pointer;
     font-weight: 600;
 
     &:hover {
-      background-color: lighten($dark, 20);
+      background-color: lighten($dark, 10);
     }
   }
 
   .footer-about {
     background-color: $dark;
-    padding: 5rem;
+    height: 45%;
   }
 
   .footer-more {
     background-color: $darker;
-    padding: 5rem;
+    height: 50%;
   }
 
 }

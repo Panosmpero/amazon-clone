@@ -37,20 +37,20 @@ const ProductDetail = (props) => {
             <img className="detail-image" src={product.image} alt="product" />
           </div>
 
-          <div className="detail-title">
+          <div className="detail">
             <h3>
               {product.renewed ? "(Renewed)" : null} {product.title}
             </h3>
-            <div className="detail-brand">by {product.brand}</div>
+            <div className="detail-brand">by <span>{product.brand}</span></div>
             <div className="detail-rating">
-              {product.rating} {product.numReviews}
+              Rating: {product.rating} stars Reviews: {product.numReviews}
             </div>
-            <div className="detail-price">{product.price}</div>
+            <div className="detail-price">${product.price}</div>
+            <div className="detail-description">{product.description}</div>
           </div>
 
           <div className="detail-checkout">
-            <div>{product.price}</div>
-            <div>+ $0 Shipping & Import Fees</div>
+            <div>${product.price}</div>
             <div>{product.stockCount ? "In Stock." : "Out of Stock."}</div>
             <div>
               <select
@@ -65,7 +65,7 @@ const ProductDetail = (props) => {
               </select>
             </div>
             {product.stockCount ? (
-              <>
+              <div>
                 <button onClick={addToCart}>
                   <i className="fas fa-cart-plus"></i>
                   <span>Add to Cart</span>
@@ -77,7 +77,7 @@ const ProductDetail = (props) => {
                     (disabled)
                   </span>
                 </button>
-              </>
+              </div>
             ) : null}
           </div>
         </div>

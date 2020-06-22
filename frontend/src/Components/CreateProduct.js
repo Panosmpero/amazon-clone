@@ -27,7 +27,7 @@ const CreateProduct = (props) => {
   // save a new Product
   const productSave = useSelector((state) => state.productSave);
   const {
-    loading: loadingSave,
+    // loading: loadingSave,
     success: successSave,
     error: errorSave,
   } = productSave;
@@ -45,10 +45,11 @@ const CreateProduct = (props) => {
 
   useEffect(() => {
 
-    if (successSave) setModalVisible(!modalVisible)
+    if (successSave) openModal({})
     dispatch(listProducts());
 
-  }, [successSave, successDelete, dispatch, modalVisible]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [successSave, successDelete, dispatch]);
 
   // Open/Close modal
   const openModal = (product, edit=false) => {
@@ -115,7 +116,6 @@ const CreateProduct = (props) => {
               <h3>Create Product</h3>
             </div>
             <div>
-              {loadingSave && <Loading />}
               {errorSave && <div>{errorSave}</div>}
             </div>
             <div>
@@ -223,7 +223,7 @@ const CreateProduct = (props) => {
             {products.map((product, idx) => (
               <tr key={`product-table-tr-${idx}`}>
                 <td>{product._id}</td>
-                <td>{product.title}</td>
+                <td>{product.renewed ? "(Renewed)" : null} {product.title}</td>
                 <td>{product.price}</td>
                 <td>{product.category}</td>
                 <td>{product.brand}</td>

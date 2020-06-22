@@ -26,7 +26,7 @@ const Header = () => {
       setCountry(resultCountry);
     };
     // uncomment to get your country :D
-    getCountry();
+    // getCountry();
   }, [country]);
 
   return (
