@@ -15,6 +15,22 @@
     border-radius: 10px;
     width: 40rem;
 
+    label {
+      display: flex;
+      align-items: center;
+
+      i {
+        color: #253b80;
+        font-size: 5rem;
+        margin: 0 1rem;
+      }
+
+      input {
+        align-items: center;
+        justify-items: center;
+      }
+    }
+
     div {
       display: flex;
       flex-direction: column;
@@ -37,7 +53,7 @@
     div:nth-child(8) {
       a {
         text-decoration: underline;
-        margin-top: .5rem;
+        margin-top: 0.5rem;
 
         &:hover {
           color: $red;
@@ -47,15 +63,13 @@
 
     input {
       padding: 1rem;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       border-radius: 5px;
     }
 
     button {
-      padding: 1rem;  
+      padding: 1rem;
       width: 100%;
     }
-
-
   }
 }

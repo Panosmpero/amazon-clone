@@ -11,14 +11,20 @@ const Register = (props) => {
 
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, userInfo, error } = userRegister;
+
   const dispatch = useDispatch();
+  
+  // pathname: signin, search: ?redirect=shipping
+  const redirect = props.location.search ? props.location.search.split("=")[1] : "/";
 
   useEffect(() => {
-    if (userInfo) props.history.push("/signin")
-  }, [props.history, userInfo]);
+    // if (userInfo) props.history.push("/signin");
+    if (userInfo) props.history.push(redirect);
+  }, [props.history, userInfo, redirect]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (password !== rePassword) return alert("Passwords do not match!")
     dispatch(register(username, email, password));
   };
 
@@ -35,7 +41,7 @@ const Register = (props) => {
         <div>
           <label htmlFor="username">Username</label>
           <input
-            type="name"
+            type="text"
             name="username"
             id="username"
             onChange={(e) => setUsername(e.target.value)}
@@ -73,7 +79,9 @@ const Register = (props) => {
         </div>
         <div>
           Already have an account?
-          <Link to="/signin">Sign In</Link>
+          <Link to={redirect === "/" ? "/signin" : `/signin?redirect=${redirect}`} >          
+            Sign In
+          </Link>
         </div>
       </div>
     </form>

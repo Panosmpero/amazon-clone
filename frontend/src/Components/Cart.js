@@ -37,9 +37,11 @@ const Cart = (props) => {
         {cartItems.length > 0 ? (
           cartItems.map((product, idx) => (
             <div className="cart-product" key={`cart-item-${idx}`}>
-              <div className="image-container">
-                <img className="cart-image" src={product.image} alt="product" />
-              </div>
+              <Link to={`/product/${product.productId}`}>
+                <div className="image-container">
+                  <img className="cart-image" src={product.image} alt="product" />
+                </div>
+              </Link>
               <div className="cart-name">
                 <Link className="cart-title" to={`/product/${product.productId}`}>
                   {product.title}

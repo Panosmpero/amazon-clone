@@ -10,6 +10,9 @@ const Header = () => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
+  const cart = useSelector(state => state.cart);
+  const { cartItems } = cart;
+
   useEffect(() => {
     const getCountry = async () => {
       let ip = await publicIp.v4();
@@ -17,13 +20,13 @@ const Header = () => {
         `http://api.ipstack.com/${ip}?access_key=${process.env.REACT_APP_IPSTACK}`
       );
       let data = await url.json();
-      console.log(data);
+      // console.log(data);
       let resultCountry = data.country_name ? data.country_name : "Not found!";
 
       setCountry(resultCountry);
     };
     // uncomment to get your country :D
-    // getCountry();
+    getCountry();
   }, [country]);
 
   return (
@@ -64,11 +67,24 @@ const Header = () => {
             </div>
           </div>
           <div className="nav-right">
-            <Link to="/cart">Cart</Link>
+
+            <Link className="nav-link" to="/cart">
+              <div className="nav-link-text">Cart</div>
+              {cartItems.length > 0 && (
+                <div className="nav-link-notification">
+                  {cartItems.reduce((acc, x) => acc + x.qty, 0)}
+                </div>
+              )}              
+            </Link>
+            
             {userInfo ? (
-              <Link to="/profile">{userInfo.username}</Link>
+              <Link to="/profile">
+                <div className="nav-link-text">{userInfo.username}</div>
+              </Link>
             ) : (
-              <Link to="/signin">Sign In</Link>
+              <Link to="/signin">
+                <div className="nav-link-text">Sign In</div>
+              </Link>
             )}
           </div>
         </div>

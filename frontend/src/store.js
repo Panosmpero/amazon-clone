@@ -8,8 +8,10 @@ import { userSigninReducer, userRegisterReducer } from "./reducers/userReducers"
 // Access Cookie
 const cartItems = Cookie.getJSON("cartItems") || [];
 const userInfo = Cookie.getJSON("userInfo") || null;
+const shipping = Cookie.getJSON("shipping") || {};
+const payment = Cookie.getJSON("payment") || {};
 
-const initialState = { cart: { cartItems }, userSignin: { userInfo } };
+const initialState = { cart: { cartItems, shipping, payment }, userSignin: { userInfo } };
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,

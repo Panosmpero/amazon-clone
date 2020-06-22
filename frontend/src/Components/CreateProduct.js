@@ -228,8 +228,8 @@ const CreateProduct = (props) => {
                 <td>{product.category}</td>
                 <td>{product.brand}</td>
                 <td>
-                  <button onClick={() => openModal(product, true)}>Edit</button>
-                  <button onClick={() => handleDelete(product)}>Delete</button>
+                  <button onClick={() => openModal(product, true)}><i className="fas fa-edit"></i></button>
+                  <button onClick={() => handleDelete(product)}><i className="fas fa-trash-alt"></i></button>
                 </td>
               </tr>
             ))}

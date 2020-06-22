@@ -9,11 +9,16 @@ const Signin = (props) => {
 
   const userSignin = useSelector((state) => state.userSignin);
   const { loading, userInfo, error } = userSignin;
+
   const dispatch = useDispatch();
 
+  // pathname: signin, search: ?redirect=shipping
+  const redirect = props.location.search ? props.location.search.split("=")[1] : "/";
+  
   useEffect(() => {
-    if (userInfo) props.history.push("/");
-  }, [props.history, userInfo]);
+    // if (userInfo) props.history.push("/");
+    if (userInfo) props.history.push(redirect);
+  }, [props.history, userInfo, redirect]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +58,7 @@ const Signin = (props) => {
         </div>
         <div>New to amazon?</div>
         <div>
-          <Link to="/register" >
+          <Link to={redirect === "/" ? "/register" : `/register?redirect=${redirect}`} >
             <button>Create an account</button>
           </Link>
         </div>

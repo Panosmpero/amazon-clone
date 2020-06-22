@@ -144,14 +144,37 @@
   .nav-right {
     justify-self: end;
     display: flex;
-    a {
-      margin-right: 1rem;
+
+    .nav-link {
+      position: relative;
+      margin-right: 2rem;
+    }
+    .nav-link-text {
       &:hover {
         color: $orange;
       }
     }
+    .nav-link-notification {
+      position: absolute;
+      background-color: red;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: .5rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      font-size: 1rem;
+      top: 0;
+      right: 0;
+      transform: translate(90%, -60%);
+      &:hover {
+        color: white;
+      }
+    }
   }
 }
+
 /*
 =====================================================================
 ============================== EXTRA BAR ============================ 
