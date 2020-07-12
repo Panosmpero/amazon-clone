@@ -9,6 +9,7 @@ const Header = () => {
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+  const isAdmin = userInfo ? userInfo.isAdmin : false;
 
   const cart = useSelector(state => state.cart);
   const { cartItems } = cart;
@@ -29,15 +30,20 @@ const Header = () => {
     // getCountry();
   }, [country]);
 
+  useEffect(() => {
+  }, [userInfo])
+
   return (
     <>
       <header className="header">
         <div className="nav-belt">
           <div className="nav-left">
             <Menu>
-              {/* <a>test1</a>
-              <a>test2</a>
-              <a>test3</a> */}
+              <Link to="/">Home</Link>
+              <Link to="/cart">Cart</Link>
+              <Link to="/profile">Profile</Link>
+              {isAdmin ? (<Link to="/products">Product Management</Link>) : null}
+              
             </Menu>
 
             <div className="amazon-logo">

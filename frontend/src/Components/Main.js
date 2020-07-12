@@ -52,7 +52,7 @@ const Main = () => {
                     </h3>
                   </Link>
                   <div className="product-rating">
-                    {rating} {numReviews}
+                    Rating: {rating} stars Reviews: {numReviews}
                   </div>
                   <div className="product-price">{formatPrice(price)}</div>
                 </div>

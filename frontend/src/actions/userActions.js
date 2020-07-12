@@ -21,6 +21,7 @@ const signin = (email, password) => async (dispatch) => {
       payload: data,
     });
     Cookie.set("userInfo", JSON.stringify(data));
+    
   } catch (error) {
     dispatch({
       type: USER_SIGNIN_FAIL,

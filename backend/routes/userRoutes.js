@@ -1,7 +1,7 @@
 import express from "express";
 import User from "../models/user";
 import { getToken } from "../util";
-// import bcrypt from "bcrypt";
+import bcrypt from "bcrypt";
 
 const userRouter = express.Router();
 
@@ -9,8 +9,11 @@ const userRouter = express.Router();
 userRouter.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const signinUser = await User.findOne({ email, password });
-    if (signinUser) {
+    const signinUser = await User.findOne({ email });
+
+    const passwordSuccess = bcrypt.compareSync(password, signinUser.password)
+
+    if (passwordSuccess) {
       const { id, username, email, isAdmin } = signinUser;
       const token = getToken(signinUser);
       res.send({
@@ -20,6 +23,7 @@ userRouter.post("/signin", async (req, res) => {
         isAdmin,
         token,
       });
+      
     } else {
       res.status(401).send({ msg: "Invalid email or password." });
     }
@@ -32,10 +36,10 @@ userRouter.post("/signin", async (req, res) => {
 userRouter.post("/register", async (req, res) => {
   try {
     let { username, email, password } = req.body;
-    // console.log(username, email, password)
-    // let hash = bcrypt.hashSync(password, 10)
-    // password = hash   
-    // console.log(password)
+
+    let hash = bcrypt.hashSync(password, 10)
+    password = hash   
+    
     const user = new User({ username, email, password });
     const newUser = await user.save();
     if (newUser) {
@@ -63,12 +67,13 @@ userRouter.get("/createadmin", async (req, res) => {
   try {
     const user = new User({
       username: "Bero",
-      password: "test1212",
+      password: bcrypt.hashSync("test1212", 10),
       email: "berpanos@gmail.com",
       isAdmin: true,
     });
     const addUser = await user.save();
     res.send(addUser);
+    
   } catch (error) {
     res.send({ msg: error.message });
   }

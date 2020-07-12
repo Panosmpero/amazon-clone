@@ -15,7 +15,7 @@ const PlaceOrder = (props) => {
   // const dispatch = useDispatch();
 
   // const handleCheckout = () => {
-  //   props.history.push("/signin?redirect=shipping");
+  //   props.history.push("");
   // };
 
   let total = cartItems

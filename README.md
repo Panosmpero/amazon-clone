@@ -18,3 +18,4 @@
 - jwt auth
 - sign-in - register user
 - css tables
+- bcrypt

@@ -197,6 +197,8 @@ button:active {
 
 .nav-belt .nav-left .bm-item {
   display: inline-block;
+  margin-bottom: 1em;
+  padding: .5em;
 }
 
 .nav-belt .nav-left .bm-overlay {
@@ -2174,6 +2176,142 @@ button:active {
 .checkout-steps .active {
   border-top: 0.3rem #f0c14b solid;
   color: #f0c14b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  scroll-behavior: auto;
+  font-size: 62.5%;
+}
+
+body {
+  font: 1.6rem Helvetica;
+  height: 100vh;
+}
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 500px / 16px = 31.25em */
+@media (max-width: 31.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px #131921 solid;
+  background-color: #f0c14b;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #eeb933;
+}
+
+button:active {
+  -webkit-box-shadow: inset 1px 1px 10px 1px #232f3e;
+          box-shadow: inset 1px 1px 10px 1px #232f3e;
+  background-color: #ecb11c;
+}
+
+#root {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "header" "main" "footer";
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 10fr 5%;
+      grid-template-rows: 1fr 10fr 5%;
+  height: 100%;
+}
+
+.header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: header;
+  color: white;
+}
+
+.main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: main;
+  position: relative;
+}
+
+.footer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: footer;
+}
+
+@media only screen and (max-width: 48em) {
+  #root {
+    -ms-grid-rows: 1fr 10fr 5%;
+        grid-template-rows: 1fr 10fr 5%;
+  }
+}
+
+.default {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.default h1 {
+  font-size: 5rem;
+  color: rgba(204, 2, 2, 0.712);
+}
+
+.default h2 {
+  margin: 1rem 0;
+}
+
+.default h2 a {
+  color: blue;
 }
 
 * {

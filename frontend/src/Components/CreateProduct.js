@@ -4,7 +4,6 @@ import { listProducts, saveProduct, deleteProduct } from "../actions/productActi
 import Loading from "./Loading";
 
 const CreateProduct = (props) => {
-
   const [modalVisible, setModalVisible] = useState(false);
   const [id, setId] = useState("");
   const [title, setTitle] = useState("asdasd");
@@ -18,11 +17,7 @@ const CreateProduct = (props) => {
 
   // get list of Products
   const productList = useSelector((state) => state.productList);
-  const { 
-    loading, 
-    products, 
-    error 
-  } = productList;
+  const { loading, products, error } = productList;
 
   // save a new Product
   const productSave = useSelector((state) => state.productSave);
@@ -40,21 +35,22 @@ const CreateProduct = (props) => {
     // error: errorDelete,
   } = productDelete;
 
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  const isAdmin = userInfo ? userInfo.isAdmin : false;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-
-    if (successSave) openModal({})
+    if (successSave) openModal({});
     dispatch(listProducts());
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [successSave, successDelete, dispatch]);
 
   // Open/Close modal
-  const openModal = (product, edit=false) => {
-
-    if (edit) setModalVisible(true)
+  const openModal = (product, edit = false) => {
+    if (edit) setModalVisible(true);
     else setModalVisible(!modalVisible);
 
     // Extract Product Properties from MongoDB
@@ -67,7 +63,7 @@ const CreateProduct = (props) => {
       category,
       stockCount,
       description,
-      renewed
+      renewed,
     } = product;
     setId(_id);
     setTitle(title);
@@ -102,11 +98,13 @@ const CreateProduct = (props) => {
     dispatch(deleteProduct(product._id));
   };
 
-  return (
+  return isAdmin ? (
     <div className="create-content">
       <div className="create-product-header">
         <h3>Products</h3>
-        <button onClick={() => openModal({})}>{modalVisible ? "Close Product Creator" : "Create Product"}</button>
+        <button onClick={() => openModal({})}>
+          {modalVisible ? "Close Product Creator" : "Create Product"}
+        </button>
       </div>
 
       {modalVisible && (
@@ -115,9 +113,7 @@ const CreateProduct = (props) => {
             <div>
               <h3>Create Product</h3>
             </div>
-            <div>
-              {errorSave && <div>{errorSave}</div>}
-            </div>
+            <div>{errorSave && <div>{errorSave}</div>}</div>
             <div>
               <label htmlFor="title">Title</label>
               <input
@@ -200,45 +196,58 @@ const CreateProduct = (props) => {
               />
             </div>
             <div>
-              <button type="submit">{id ? "Update Product" : "Create Product"}</button>
+              <button type="submit">
+                {id ? "Update Product" : "Create Product"}
+              </button>
             </div>
           </div>
         </form>
       )}
 
-      {loading ? <Loading /> : error ? <div>{error.msg}</div> : (
-              <div className="product-list">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Category</th>
-              <th>Brand</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product, idx) => (
-              <tr key={`product-table-tr-${idx}`}>
-                <td>{product._id}</td>
-                <td>{product.renewed ? "(Renewed)" : null} {product.title}</td>
-                <td>{product.price}</td>
-                <td>{product.category}</td>
-                <td>{product.brand}</td>
-                <td>
-                  <button onClick={() => openModal(product, true)}><i className="fas fa-edit"></i></button>
-                  <button onClick={() => handleDelete(product)}><i className="fas fa-trash-alt"></i></button>
-                </td>
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <div>{error.msg}</div>
+      ) : (
+        <div className="product-list">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Brand</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {products.map((product, idx) => (
+                <tr key={`product-table-tr-${idx}`}>
+                  <td>{product._id}</td>
+                  <td>
+                    {product.renewed ? "(Renewed)" : null} {product.title}
+                  </td>
+                  <td>{product.price}</td>
+                  <td>{product.category}</td>
+                  <td>{product.brand}</td>
+                  <td>
+                    <button onClick={() => openModal(product, true)}>
+                      <i className="fas fa-edit"></i>
+                    </button>
+                    <button onClick={() => handleDelete(product)}>
+                      <i className="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
-
     </div>
+  ) : (
+    <div>You need admin privileges to access this.</div>
   );
 };
 

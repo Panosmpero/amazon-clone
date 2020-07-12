@@ -1,7 +1,6 @@
 import express from "express";
 // import data from "./data";
 import mongoose from "mongoose";
-import bodyParser from "body-parser";
 import cors from "cors";
 import userRouter from "./routes/userRoutes";
 import productRoutes from "./routes/productRoutes";
@@ -24,8 +23,9 @@ mongoose.connect(
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// old bodyparser now included in express
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/users", userRouter);
 app.use("/api/products", productRoutes);
