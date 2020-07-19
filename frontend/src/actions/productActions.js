@@ -96,5 +96,13 @@ const deleteProduct = (productId) => async (dispatch, getState) => {
   }
 };
 
+const sortProducts = (type) => async (dispatch, getState) => {
+  try {
+    
+  } catch (error) {
+    
+  }
+}
 
-export { listProducts, detailsProduct, saveProduct, deleteProduct };
+
+export { listProducts, detailsProduct, saveProduct, deleteProduct, sortProducts };

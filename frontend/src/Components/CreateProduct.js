@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { listProducts, saveProduct, deleteProduct } from "../actions/productActions";
+import { listProducts, saveProduct, deleteProduct, sortProducts } from "../actions/productActions";
 import Loading from "./Loading";
 
 const CreateProduct = (props) => {
@@ -96,6 +96,10 @@ const CreateProduct = (props) => {
 
   const handleDelete = (product) => {
     dispatch(deleteProduct(product._id));
+  };
+
+  const handleSort = (type) => {
+    dispatch(sortProducts(type))
   };
 
   return isAdmin ? (
@@ -215,7 +219,7 @@ const CreateProduct = (props) => {
               <tr>
                 <th>ID</th>
                 <th>Title</th>
-                <th>Price</th>
+                <th onClick={() => handleSort("price")} >Price</th>
                 <th>Category</th>
                 <th>Brand</th>
                 <th>Action</th>
